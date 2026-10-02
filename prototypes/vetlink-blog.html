@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Animal Care Blog — VetLink Africa</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#f6f8f4;--surface:#fff;--ink:#0f2a22;--mute:#52665e;--leaf:#1f6b4f;--leaf2:#d9ece3;--sun:#f2b33d;--red:#c8321f;--redbg:#fde9e5;--line:#d5ded8;--amber:#b86e00;--amberbg:#fff1d6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1713;--surface:#12251e;--ink:#eaf3ee;--mute:#9db3a9;--leaf:#4fbf8f;--leaf2:#17352a;--line:#274035;--redbg:#3a1a15;--amberbg:#3a2a0c;--amber:#f2b33d}}
+:root[data-theme="dark"]{--bg:#0b1713;--surface:#12251e;--ink:#eaf3ee;--mute:#9db3a9;--leaf:#4fbf8f;--leaf2:#17352a;--line:#274035;--redbg:#3a1a15;--amberbg:#3a2a0c;--amber:#f2b33d}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Public Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;line-height:1.15;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 60px}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:10px;flex-wrap:wrap}
+.logo{font:800 22px "Bricolage Grotesque",sans-serif}.logo span{color:var(--leaf)}
+h1{font-size:clamp(26px,4vw,36px);margin:8px 0 6px}
+.btn{border:0;border-radius:10px;padding:9px 14px;font:600 14px "Public Sans",sans-serif;cursor:pointer;background:var(--leaf);color:#fff}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin:14px 0 20px}
+.tab{background:none;border:0;border-bottom:3px solid transparent;padding:10px 14px;font:600 15px "Public Sans",sans-serif;color:var(--mute);cursor:pointer}
+.tab[aria-selected="true"]{color:var(--ink);border-color:var(--leaf)}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:9px;width:100%}
+.bar input{flex:1;min-width:200px}.bar select{width:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:flex;flex-direction:column;gap:8px}
+.card h3{font-size:19px}
+.cat{color:var(--leaf);font-weight:600;font-size:14px}
+.pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:600;background:var(--leaf2);color:var(--leaf);align-self:flex-start}
+.pill.a{background:var(--amberbg);color:var(--amber)}.pill.g{background:var(--line);color:var(--mute)}
+.mute{color:var(--mute);font-size:14px}
+article{max-width:68ch;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px}
+article h1{margin:6px 0 10px}
+article h3{margin:20px 0 6px;font-size:20px}
+article p,article li{font-size:17px}
+.review{display:flex;gap:12px;align-items:center;background:var(--leaf2);border-radius:12px;padding:12px 14px;margin:14px 0}
+.review.no{background:var(--amberbg)}
+.review b{display:block}
+.tick{flex:none;width:34px;height:34px;border-radius:50%;background:var(--leaf);color:#fff;display:grid;place-items:center;font-weight:800}
+.review.no .tick{background:var(--amber)}
+.warn{border-left:5px solid var(--red);background:var(--redbg);padding:10px 14px;border-radius:8px;margin:16px 0}
+.disc{font-size:14px;color:var(--mute);border-top:1px solid var(--line);margin-top:20px;padding-top:12px}
+.rel{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.back{margin-bottom:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px}
+label{display:block;font-size:13px;font-weight:600;margin:10px 0 3px}
+.aiout{background:var(--bg);border:1.5px dashed var(--line);border-radius:12px;padding:12px;margin-top:10px;font-size:14px}
+.row{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--line);padding:10px 0}
+.row:first-of-type{border-top:0}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:10px;font-weight:600;z-index:9}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="logo">VetLink<span> Africa</span></div><span class="mute">Animal care blog</span></header>
+<h1>Animal care you can trust</h1>
+<p class="mute" style="margin:0">Health articles are checked by a veterinary professional before they carry the Reviewed badge.</p>
+<div class="tabs" role="tablist"><button class="tab" role="tab" aria-selected="true" data-t="read">Read</button><button class="tab" role="tab" aria-selected="false" data-t="write">Write and review</button></div>
+<div id="view"></div>
+</div>
+<script>
+const $=s=>document.querySelector(s);
+const toast=t=>{const e=document.createElement("div");e.className="toast";e.textContent=t;document.body.appendChild(e);setTimeout(()=>e.remove(),2200)};
+const REV={
+ amina:{n:"Dr. Amina Wekesa",c:"BVM, MSc. Registered veterinary surgeon, dairy and mixed practice"},
+ john:{n:"Dr. John Doe",c:"BVM. Registered veterinary surgeon, small animal practice"},
+ peter:{n:"Dr. Peter Otieno",c:"BVM. Registered veterinary surgeon, poultry health"}};
+let A=[
+ {id:1,cat:"Dogs",title:"Core vaccines for dogs and cats",by:"VetLink editorial",rev:"john",date:"12 Sep 2026",tags:["vaccination","puppies","rabies"],
+  body:`<p>Vaccines teach your animal's body to fight serious infections before it meets them. Which vaccines your animal needs depends on its age, where you live and how it lives, so your vet should set the schedule.</p><h3>Rabies</h3><p>Rabies is fatal and spreads from animals to people. Vaccinate dogs and cats, and keep the certificate. Dogs in many areas are vaccinated once a year.</p><h3>Other core vaccines</h3><p>Dogs are usually protected against distemper, parvovirus, adenovirus and parainfluenza. Cats are usually protected against feline parvovirus (panleukopenia), herpesvirus and calicivirus. Puppies and kittens need a series of doses, not just one.</p><h3>Before the visit</h3><ul><li>Bring any vaccination card.</li><li>Tell the vet if the animal is unwell, pregnant or on medicine.</li><li>Watch for swelling, vomiting or tiredness after vaccination, and call your vet if these are severe.</li></ul>`,
+  faq:["When should a puppy get its first vaccine?","Is rabies vaccination required?","Can an adult dog with no history be vaccinated?"]},
+ {id:2,cat:"Cattle",title:"Spotting early signs of East Coast fever",by:"VetLink editorial",rev:"amina",date:"28 Aug 2026",tags:["ticks","cattle","disease prevention"],
+  body:`<p>East Coast fever is a tick-borne disease of cattle. It can kill quickly, so early action matters.</p><h3>What to look for</h3><ul><li>High fever and loss of appetite.</li><li>Swollen glands in front of the shoulder or ears.</li><li>Weakness, fast breathing or coughing.</li><li>Ticks on the ears, udder or belly.</li></ul><div class="warn"><b>Call a vet the same day</b> if you see these signs. Sick animals need confirmed diagnosis and the right treatment. Do not guess or share medicines between animals.</div><h3>Prevention</h3><p>Regular tick control, as advised by your vet or county veterinary office, is the main protection. Ask about immunisation in your area.</p>`,
+  faq:["How is East Coast fever spread?","Can calves get it?","How often should I dip or spray?"]},
+ {id:3,cat:"Nutrition",title:"Feeding dairy cows through the dry season",by:"VetLink editorial",rev:"amina",date:"5 Aug 2026",tags:["dairy","feed","water"],
+  body:`<p>Milk falls fast when feed and water run short. Planning ahead protects both the cow and your income.</p><h3>Store feed early</h3><p>Make hay or silage while pasture is green, and set aside crop residues. Introduce new feeds slowly over about a week to avoid stomach upsets.</p><h3>Water comes first</h3><p>A milking cow needs large amounts of clean water every day. Check troughs daily and keep them shaded.</p><h3>Minerals</h3><p>Provide a mineral lick suited to dairy cattle. Ask your vet or livestock officer about local deficiencies.</p>`,
+  faq:["How much hay does a cow need?","Can I feed maize stover alone?","What are signs of poor nutrition?"]},
+ {id:4,cat:"Poultry",title:"A flock vaccination calendar",by:"VetLink editorial",rev:"peter",date:"19 Jul 2026",tags:["poultry","vaccination"],
+  body:`<p>Vaccinating on time is the cheapest way to protect a flock. Diseases such as Newcastle disease and Gumboro are common.</p><h3>Build your calendar</h3><p>Write down the hatch date, then ask your vet or poultry officer for the vaccine programme that suits your breed and area. Use the vaccine's own instructions for storage and route.</p><h3>Keep records</h3><p>Note batch numbers and dates. Unexplained deaths of several birds in a week need a vet visit.</p>`,
+  faq:["When should chicks get their first vaccine?","How do I store vaccines?","Do layers need boosters?"]},
+ {id:5,cat:"First Aid",title:"What to do before the vet arrives",by:"Community contributor",rev:null,date:"Draft",tags:["first aid","emergency"],
+  body:`<p>When an animal is hurt, stay calm and keep yourself safe. Frightened animals may bite or kick.</p><h3>Basic steps</h3><ul><li>Call a vet first and describe what happened.</li><li>Keep the animal quiet, warm and in a safe place.</li><li>Press a clean cloth on bleeding wounds.</li><li>Do not give human medicine, and do not force food or water.</li></ul>`,faq:[]}
+];
+let cat="All",q="",open=null;
+function read(){
+  const cats=["All",...new Set(A.map(a=>a.cat))];
+  if(open)return art(A.find(a=>a.id===open));
+  const list=A.filter(a=>(cat==="All"||a.cat===cat)&&(a.title+a.tags.join(" ")+a.cat).toLowerCase().includes(q.toLowerCase()));
+  $("#view").innerHTML=`<div class="bar"><input id="s" type="search" placeholder="Search articles" value="${q}" aria-label="Search"><select id="c" aria-label="Category">${cats.map(c=>`<option ${c===cat?"selected":""}>${c}</option>`).join("")}</select></div>
+  <div class="cards">${list.map(a=>`<button class="card" data-id="${a.id}"><span class="cat">${a.cat}</span><h3>${a.title}</h3><span class="mute">${a.date}. ${a.by}</span>${a.rev?`<span class="pill">Reviewed by ${REV[a.rev].n}</span>`:`<span class="pill a">Awaiting veterinary review</span>`}</button>`).join("")||"<p>No articles match. Try a different word or category.</p>"}</div>`;
+  $("#s").oninput=e=>{q=e.target.value;read();const s=$("#s");s.focus();s.setSelectionRange(q.length,q.length)};
+  $("#c").onchange=e=>{cat=e.target.value;read()};
+  document.querySelectorAll(".card").forEach(b=>b.onclick=()=>{open=+b.dataset.id;read();scrollTo(0,0)});
+}
+function art(a){
+  const r=a.rev?REV[a.rev]:null,rel=A.filter(x=>x.id!==a.id&&(x.cat===a.cat||x.tags.some(t=>a.tags.includes(t)))).slice(0,3);
+  $("#view").innerHTML=`<button class="btn alt back" id="bk">Back to articles</button><article><span class="cat">${a.cat}</span><h1>${a.title}</h1><div class="mute">${a.by}. ${a.date}</div>
+  ${r?`<div class="review"><span class="tick" aria-hidden="true">✓</span><div><b>Reviewed by a Veterinary Professional</b>${r.n}. ${r.c}<br><span class="mute">Review date: ${a.date}</span></div></div>`:`<div class="review no"><span class="tick" aria-hidden="true">!</span><div><b>Awaiting veterinary review</b>This article has not been checked by a veterinary professional. Do not rely on it for health decisions.</div></div>`}
+  ${a.body}
+  ${a.faq.length?`<h3>Common questions</h3><ul>${a.faq.map(f=>`<li>${f}</li>`).join("")}</ul>`:""}
+  <p class="disc">This information is educational and does not replace examination or treatment by a qualified veterinarian. <a href="#" id="find">Find a vet near you</a></p>
+  ${rel.length?`<h3>Related articles</h3><div class="rel">${rel.map(x=>`<button class="btn alt" data-id="${x.id}">${x.title}</button>`).join("")}</div>`:""}
+  <div class="rel" style="margin-top:16px"><button class="btn alt" id="sh">Copy share link</button></div></article>`;
+  $("#bk").onclick=()=>{open=null;read()};
+  document.querySelectorAll(".rel [data-id]").forEach(b=>b.onclick=()=>{open=+b.dataset.id;read();scrollTo(0,0)});
+  $("#find").onclick=e=>{e.preventDefault();toast("Opens the vet finder")};
+  $("#sh").onclick=async()=>{try{await navigator.clipboard.writeText(location.href);toast("Link copied")}catch(_){toast("Copy the page address to share")}};
+}
+let draft=null;
+function write(){
+  const pend=A.filter(a=>!a.rev);
+  $("#view").innerHTML=`<div class="grid"><div class="panel"><h3>New article</h3>
+  <label for="wt">Title</label><input id="wt"><label for="wc">Category</label><select id="wc">${["Dogs","Cats","Cattle","Goats","Sheep","Poultry","Horses","Rabbits","Nutrition","Disease prevention","Vaccination","First Aid","Welfare","Farming","Pet care"].map(c=>`<option>${c}</option>`).join("")}</select>
+  <label for="wb">Article text</label><textarea id="wb" rows="7" placeholder="Write clearly. Health advice needs a veterinary reviewer before it can be labelled Reviewed."></textarea>
+  <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="btn alt" id="ai">Suggest summary, SEO and FAQs</button><button class="btn" id="sub">Submit for veterinary review</button></div>
+  <div class="aiout" id="aio" hidden></div><p class="mute">The AI helper only drafts metadata. It never marks an article as reviewed.</p></div>
+  <div class="panel"><h3>Review queue</h3>${pend.length?pend.map(a=>`<div class="row"><span><b>${a.title}</b><br><span class="mute">${a.cat}. ${a.by}</span></span><span><span class="pill a">${a.status||"Awaiting veterinary review"}</span> ${a.status==="In review"?`<select data-v="${a.id}" aria-label="Reviewer" style="width:auto"><option value="">Reviewer sign-off…</option>${Object.entries(REV).map(([k,v])=>`<option value="${k}">${v.n}</option>`).join("")}</select>`:""}</span></div>`).join(""):"<p>No articles waiting.</p>"}
+  <p class="mute" style="margin-top:12px">Reviewers confirm accuracy, add their credentials and the review date, then the Reviewed badge appears.</p></div></div>`;
+  $("#ai").onclick=()=>{const t=$("#wt").value.trim(),b=$("#wb").value.trim();if(!t||!b){toast("Add a title and some text first");return}
+    const first=b.split(/(?<=[.!?])\s/)[0].slice(0,150);
+    $("#aio").hidden=false;$("#aio").innerHTML=`<b>Summary</b><br>${first}<br><b>SEO title</b><br>${t.slice(0,58)} | VetLink Africa<br><b>Meta description</b><br>${first.slice(0,150)}<br><b>FAQs to answer</b><ul><li>What are the signs of ${t.toLowerCase()}?</li><li>When should I call a vet?</li><li>How can I prevent this?</li></ul>`};
+  $("#sub").onclick=()=>{const t=$("#wt").value.trim(),b=$("#wb").value.trim();if(!t||!b){toast("Add a title and some text first");return}
+    A.push({id:Date.now(),cat:$("#wc").value,title:t,by:"You",rev:null,date:"Draft",tags:[],body:b.split(/\n+/).map(p=>`<p>${p}</p>`).join(""),faq:[],status:"In review"});
+    toast("Sent to a veterinary reviewer");write()};
+  document.querySelectorAll("[data-v]").forEach(s=>s.onchange=()=>{if(!s.value)return;const a=A.find(x=>x.id==s.dataset.v);a.rev=s.value;a.date="1 Oct 2026";delete a.status;toast("Published with Reviewed badge");write()});
+}
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",x===b));b.dataset.t==="read"?(open=null,read()):write()});
+read();
+</script>
+</body>
+</html>

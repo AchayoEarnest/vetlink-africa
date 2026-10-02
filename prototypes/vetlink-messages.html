@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Messages — VetLink Africa</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#f6f8f4;--surface:#fff;--ink:#0f2a22;--mute:#52665e;--leaf:#1f6b4f;--leaf2:#d9ece3;--sun:#f2b33d;--red:#c8321f;--redbg:#fde9e5;--line:#d5ded8;--amber:#b86e00;--amberbg:#fff1d6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1713;--surface:#12251e;--ink:#eaf3ee;--mute:#9db3a9;--leaf:#4fbf8f;--leaf2:#17352a;--line:#274035;--redbg:#3a1a15;--amberbg:#3a2a0c;--amber:#f2b33d}}
+:root[data-theme="dark"]{--bg:#0b1713;--surface:#12251e;--ink:#eaf3ee;--mute:#9db3a9;--leaf:#4fbf8f;--leaf2:#17352a;--line:#274035;--redbg:#3a1a15;--amberbg:#3a2a0c;--amber:#f2b33d}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Public Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;line-height:1.15;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 40px}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:10px;flex-wrap:wrap}
+.logo{font:800 22px "Bricolage Grotesque",sans-serif}.logo span{color:var(--leaf)}
+.btn{border:0;border-radius:10px;padding:9px 14px;font:600 14px "Public Sans",sans-serif;cursor:pointer;background:var(--leaf);color:#fff}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.r{background:var(--red)}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{border:0;background:var(--surface);color:var(--ink);padding:7px 14px;font:600 14px "Public Sans",sans-serif;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--leaf);color:#fff}
+.chat{display:grid;grid-template-columns:290px 1fr;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;height:calc(100vh - 150px);min-height:480px}
+@media(max-width:760px){.chat{grid-template-columns:1fr}.chat.t .side{display:none}.chat:not(.t) .thread{display:none}}
+.side{border-right:1px solid var(--line);overflow-y:auto}
+.conv{display:flex;gap:10px;padding:12px 14px;border:0;border-bottom:1px solid var(--line);background:none;width:100%;text-align:left;color:var(--ink);font:inherit;cursor:pointer}
+.conv[aria-current="true"]{background:var(--leaf2)}
+.av{flex:none;width:42px;height:42px;border-radius:50%;background:var(--leaf2);display:grid;place-items:center;font-weight:700;color:var(--leaf)}
+.conv[aria-current="true"] .av{background:var(--surface)}
+.conv small{display:block;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:190px}
+.dot{margin-left:auto;background:var(--red);color:#fff;border-radius:999px;font-size:12px;min-width:20px;height:20px;display:grid;place-items:center;font-weight:700}
+.thread{display:flex;flex-direction:column;min-height:0}
+.th{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.ctx{background:var(--leaf2);padding:8px 16px;font-size:14px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:8px}
+.m{max-width:80%;padding:9px 13px;border-radius:14px;background:var(--leaf2)}
+.m.me{align-self:flex-end;background:var(--leaf);color:#fff}
+.m time{display:block;font-size:11px;opacity:.7;margin-top:2px}
+.m.sys{align-self:center;background:var(--line);color:var(--mute);font-size:13px;max-width:90%}
+.card{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:10px 12px;margin-top:6px}
+.me .card{background:var(--surface)}
+.file{display:inline-flex;gap:6px;align-items:center;margin-top:6px;background:var(--surface);color:var(--ink);border-radius:8px;padding:4px 10px;font-size:14px}
+.alert{border-left:6px solid var(--red);background:var(--redbg);padding:10px 14px;margin:8px 16px 0;border-radius:8px;font-size:14px}
+.comp{border-top:1px solid var(--line);padding:10px 12px}
+.tools{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
+.tools .btn{padding:5px 10px;font-weight:500;font-size:13px}
+.send{display:flex;gap:8px}
+textarea{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:8px;flex:1;resize:none}
+.typing{align-self:flex-start;color:var(--mute);font-size:13px}
+.note{font-size:12px;color:var(--mute);margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="logo">VetLink<span> Africa</span> <small style="font:500 14px 'Public Sans'">Messages</small></div><div class="seg" role="group" aria-label="View as"><button id="vo" aria-pressed="true">View as owner</button><button id="vv" aria-pressed="false">View as vet</button></div></header>
+<div class="chat" id="chat">
+ <div class="side" id="side"></div>
+ <div class="thread" id="thread"></div>
+</div>
+</div>
+<script>
+const $=s=>document.querySelector(s);
+let role="owner";
+const now=()=>new Date().toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+const C=[
+ {id:1,vet:"Dr. John Doe",vi:"JD",owner:"Wanjiru K.",oi:"WK",animal:"Max (dog, German Shepherd, 3 yrs)",appt:"Annual check-up, 15 Oct, 10:00",unread:1,
+  m:[{f:"owner",t:"Hello doctor, Max has been scratching his ears for two days.",ts:"09:12"},{f:"vet",t:"Thanks for letting me know. Is there any discharge or smell, and is he shaking his head?",ts:"09:20"},{f:"owner",t:"A little brown discharge, yes.",ts:"09:24"}]},
+ {id:2,vet:"Dr. Amina Wekesa",vi:"AW",owner:"Wanjiru K.",oi:"WK",animal:"Bella (cow, Friesian cross, 5 yrs)",appt:"Pregnancy check, 14 Oct, 09:00",unread:0,
+  m:[{f:"vet",t:"Bella's insemination was 12 Aug. I'll do the pregnancy check at the farm visit.",ts:"Yesterday"}]}
+];
+let cur=1,mobileThread=false;
+const peer=c=>role==="owner"?{n:c.vet,i:c.vi}:{n:c.owner,i:c.oi};
+const me=()=>role;
+const EMER=/(not breathing|can'?t breathe|difficulty breathing|poison|seizure|convuls|unconscious|collaps|heavy bleeding|bloat|can'?t urinate|can'?t stand|difficult birth)/i;
+const PHONE=/(\+?254|0)[17]\d{8}/;
+
+function side(){
+  $("#side").innerHTML=C.map(c=>{const p=peer(c),l=c.m.at(-1);return `<button class="conv" data-id="${c.id}" ${c.id===cur?'aria-current="true"':""}><span class="av">${p.i}</span><span><b>${p.n}</b><small>${c.animal.split(" (")[0]}: ${l.t||(l.file?"Attachment":"Shared profile")}</small></span>${c.unread&&role==="owner"&&c.id!==cur?`<span class="dot" aria-label="${c.unread} unread">${c.unread}</span>`:""}</button>`}).join("");
+  document.querySelectorAll(".conv").forEach(b=>b.onclick=()=>{cur=+b.dataset.id;C.find(c=>c.id===cur).unread=0;mobileThread=true;draw()});
+}
+function bubble(m){
+  if(m.f==="sys")return `<div class="m sys">${m.t}</div>`;
+  return `<div class="m ${m.f===me()?"me":""}">${m.t||""}${m.file?`<div class="file">📎 ${m.file}</div>`:""}${m.card?`<div class="card"><b>${m.card.n}</b><br>${m.card.d}</div>`:""}<time>${m.ts}</time></div>`;
+}
+function thread(){
+  const c=C.find(x=>x.id===cur),p=peer(c),emer=role==="owner"&&c.m.some(m=>m.f==="owner"&&EMER.test(m.t||""));
+  $("#thread").innerHTML=`<div class="th"><button class="btn alt" id="back" style="display:${innerWidth<=760?"block":"none"}">Back</button><span class="av">${p.i}</span><div><b>${p.n}</b><br><small style="color:var(--mute)">${role==="owner"?"Verified Veterinary Professional":"Animal owner"}</small></div><span style="margin-left:auto"><button class="btn alt" id="call">Call through VetLink</button></span></div>
+  <div class="ctx"><b>${c.animal}</b> <span>•</span> <span>${c.appt}</span> <button class="btn alt" id="hist" style="padding:3px 10px;font-size:13px">Consultation history</button></div>
+  ${emer?`<div class="alert"><b>This may be an emergency.</b> Do not wait for a reply. Use the Emergency button on VetLink or call a vet or animal hospital now.</div>`:""}
+  <div class="msgs" id="msgs" aria-live="polite">${c.m.map(bubble).join("")}</div>
+  <div class="comp"><div class="tools"><label class="btn alt" style="cursor:pointer;display:inline-block">📎 Attach photo or document<input id="fl" type="file" accept="image/*,.pdf" hidden></label><button class="btn alt" id="shr">${role==="owner"?"Share animal profile":"Share care plan"}</button></div>
+  <div class="send"><textarea id="tx" rows="2" aria-label="Message" placeholder="Write a message"></textarea><button class="btn" id="sd">Send</button></div>
+  <p class="note">Phone numbers and addresses stay hidden. Chat and calls go through VetLink until an appointment is confirmed.</p></div>`;
+  const ms=$("#msgs");ms.scrollTop=ms.scrollHeight;
+  $("#back").onclick=()=>{mobileThread=false;draw()};
+  $("#sd").onclick=send;$("#tx").onkeydown=e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send()}};
+  $("#fl").onchange=e=>{const f=e.target.files[0];if(f){push({f:me(),file:f.name,ts:now()});reply("Thanks, I can see the file. I'll look at it before replying properly.")}};
+  $("#shr").onclick=()=>{push(role==="owner"?{f:"owner",card:{n:"Max, German Shepherd, 3 years",d:"Vaccinations up to date. Last visit 18 Aug. No known allergies."},ts:now()}:{f:"vet",card:{n:"Care plan",d:"Clean ears gently with a vet-approved cleaner. Recheck in 5 days."},ts:now()});reply("Received, thank you.")};
+  $("#hist").onclick=()=>push({f:"sys",t:role==="owner"?"Past consultations with this vet: 18 Aug 2026 (vomiting, treated), 20 Oct 2025 (rabies vaccine).":"Past consultations for this animal: 18 Aug 2026 (vomiting, treated), 20 Oct 2025 (rabies vaccine)."});
+  $("#call").onclick=()=>push({f:"sys",t:"Calls will connect through VetLink without showing either person's number. Voice calls are not enabled yet."});
+}
+function push(m){C.find(c=>c.id===cur).m.push(m);draw()}
+function send(){
+  const t=$("#tx").value.trim();if(!t)return;
+  push({f:me(),t,ts:now()});
+  if(PHONE.test(t))push({f:"sys",t:"It looks like you shared a phone number. Keep contact details in VetLink until your appointment is confirmed."});
+  if(role==="owner"&&EMER.test(t))return;
+  reply();
+}
+function reply(txt){
+  const c=C.find(x=>x.id===cur),other=role==="owner"?"vet":"owner";
+  const el=document.createElement("div");el.className="typing";el.textContent=peer(c).n+" is typing…";$("#msgs").appendChild(el);
+  setTimeout(()=>{if(cur!==c.id||!el.isConnected){c.m.push({f:other,t:txt||(role==="owner"?"Thanks. Please bring him in this week so I can look at the ears properly. If he becomes painful or tilts his head, come sooner.":"Thank you. I'll update the plan and see you at the appointment."),ts:now()});return}
+    c.m.push({f:other,t:txt||(role==="owner"?"Thanks. Please bring him in this week so I can look at the ears properly. If he becomes painful or tilts his head, come sooner.":"Thank you. I'll update the plan and see you at the appointment."),ts:now()});draw()},1400);
+}
+function draw(){$("#chat").classList.toggle("t",mobileThread||innerWidth>760);side();thread()}
+$("#vo").onclick=()=>{role="owner";$("#vo").setAttribute("aria-pressed",true);$("#vv").setAttribute("aria-pressed",false);draw()};
+$("#vv").onclick=()=>{role="vet";$("#vv").setAttribute("aria-pressed",true);$("#vo").setAttribute("aria-pressed",false);draw()};
+addEventListener("resize",draw);
+draw();
+</script>
+</body>
+</html>

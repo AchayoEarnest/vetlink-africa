@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VetLink Africa — Better Connections. Better Animal Care.</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#f6f8f4;--surface:#fff;--ink:#0f2a22;--mute:#52665e;--leaf:#1f6b4f;--leaf2:#d9ece3;--sun:#f2b33d;--red:#c8321f;--redbg:#fde9e5;--line:#d5ded8;--amber:#b86e00;--amberbg:#fff1d6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1713;--surface:#12251e;--ink:#eaf3ee;--mute:#9db3a9;--leaf:#4fbf8f;--leaf2:#17352a;--line:#274035;--redbg:#3a1a15;--amberbg:#3a2a0c;--amber:#f2b33d}}
+:root[data-theme="dark"]{--bg:#0b1713;--surface:#12251e;--ink:#eaf3ee;--mute:#9db3a9;--leaf:#4fbf8f;--leaf2:#17352a;--line:#274035;--redbg:#3a1a15;--amberbg:#3a2a0c;--amber:#f2b33d}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Public Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",system-ui,sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px}
+.logo{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:22px;text-decoration:none}
+.logo span{color:var(--leaf)}
+nav{display:flex;gap:18px;align-items:center;font-size:15px}
+nav a{text-decoration:none;color:var(--mute)}
+@media(max-width:700px){nav a.h{display:none}}
+.btn{display:inline-block;border:0;border-radius:10px;padding:12px 20px;font:600 15px "Public Sans",sans-serif;cursor:pointer;text-decoration:none;background:var(--leaf);color:#fff}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn.sos{background:var(--red)}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;padding:40px 0 56px}
+@media(max-width:800px){.hero{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(36px,6vw,60px);font-weight:800;letter-spacing:-.02em}
+.hero p{color:var(--mute);font-size:18px;max-width:52ch;margin:18px 0 26px}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.tag{font-weight:600;color:var(--leaf);margin-bottom:12px}
+.art{background:var(--leaf2);border-radius:28px;padding:20px}
+.art svg{width:100%;height:auto;display:block}
+section{padding:48px 0}
+h2{font-size:clamp(26px,4vw,38px);font-weight:700;margin-bottom:8px}
+.sub{color:var(--mute);margin:0 0 28px;max-width:60ch}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;counter-reset:s;padding:0;list-style:none}
+.steps li{counter-increment:s;border-top:3px solid var(--leaf);padding-top:12px;font-weight:600}
+.steps li:before{content:counter(s);display:block;font:800 28px "Bricolage Grotesque",sans-serif;color:var(--leaf)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:9px 16px;font:500 15px "Public Sans",sans-serif;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--leaf);color:#fff;border-color:var(--leaf)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px}
+.finder{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:800px){.finder{grid-template-columns:1fr}}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.vet{display:flex;gap:12px;padding:14px 0;border-top:1px solid var(--line)}
+.vet:first-child{border-top:0}
+.av{flex:none;width:44px;height:44px;border-radius:50%;background:var(--leaf2);display:grid;place-items:center;font-weight:700;color:var(--leaf)}
+.vet b{display:block}
+.vet small{color:var(--mute)}
+.badge{font-size:12px;background:var(--leaf2);color:var(--leaf);border-radius:6px;padding:2px 7px;margin-right:4px;display:inline-block;margin-top:4px;font-weight:600}
+.dist{margin-left:auto;font-weight:700;white-space:nowrap}
+.map{background:var(--leaf2);border-radius:14px;min-height:320px;position:relative;overflow:hidden}
+.pin{position:absolute;width:30px;height:30px;transform:translate(-50%,-100%);font-size:11px;font-weight:700;color:#fff;background:var(--leaf);border-radius:50% 50% 50% 0;rotate:-45deg;display:grid;place-items:center;border:2px solid var(--surface)}
+.pin i{rotate:45deg;font-style:normal}
+.you{position:absolute;left:50%;top:55%;width:16px;height:16px;background:var(--sun);border:3px solid var(--ink);border-radius:50%;transform:translate(-50%,-50%)}
+.chat{display:flex;flex-direction:column;gap:10px}
+.msg{padding:12px 14px;border-radius:14px;max-width:88%}
+.me{background:var(--leaf);color:#fff;align-self:flex-end}
+.ai{background:var(--leaf2);align-self:flex-start}
+.triage{border-radius:14px;padding:14px;border-left:6px solid}
+.t-low{background:var(--leaf2);border-color:var(--leaf)}
+.t-vet{background:var(--amberbg);border-color:var(--amber)}
+.t-urgent{background:var(--amberbg);border-color:var(--red)}
+.t-emergency{background:var(--redbg);border-color:var(--red)}
+.triage strong{display:block;font:700 18px "Bricolage Grotesque",sans-serif;margin-bottom:4px}
+.row{display:flex;gap:8px;margin-top:12px}
+textarea,select{flex:1;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:10px}
+.disc{font-size:13px;color:var(--mute);margin-top:10px}
+.sosband{background:var(--ink);color:#fff;border-radius:24px;padding:32px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+.sosband p{margin:6px 0 0;color:#c9d9d1}
+.edu{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.edu div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.edu small{color:var(--leaf);font-weight:600}
+dialog{border:0;border-radius:20px;padding:0;max-width:520px;width:calc(100% - 32px);background:var(--surface);color:var(--ink)}
+dialog::backdrop{background:rgba(5,15,10,.65)}
+.dh{background:var(--red);color:#fff;padding:18px 22px}
+.db{padding:20px 22px}
+.db ol{padding-left:20px;margin:8px 0 16px}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--mute);font-size:14px;margin-top:20px}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:5;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+@media(prefers-reduced-motion:no-preference){.pulse{animation:p 2.4s ease-out 1}@keyframes p{0%{transform:scale(.96)}50%{transform:scale(1.05)}100%{transform:scale(1)}}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="logo" href="#">VetLink<span> Africa</span></a>
+  <nav><a class="h" href="#find">Find a vet</a><a class="h" href="#ai">VetLink AI</a><a class="h" href="#learn">Learn</a><button class="btn" id="install" hidden>Install app</button></nav>
+</header>
+
+<div class="hero">
+  <div>
+    <div class="tag">Better Connections. Better Animal Care.</div>
+    <h1>Find the right veterinary care near you</h1>
+    <p>Connect with trusted veterinarians, clinics and animal-care professionals, manage your animals' health records, and get AI-powered guidance whenever you need help.</p>
+    <div class="ctas"><a class="btn" href="#find">Find a Vet</a><a class="btn alt" href="#ai">Describe an Animal Problem</a><a class="btn alt" href="#learn">Explore Animal Care</a></div>
+  </div>
+  <div class="art" aria-hidden="true">
+    <svg viewBox="0 0 400 300"><rect width="400" height="300" rx="20" fill="none"/>
+      <circle cx="320" cy="60" r="34" fill="#f2b33d"/>
+      <path d="M0 230 Q100 190 200 225 T400 215 V300 H0Z" fill="#1f6b4f"/>
+      <path d="M0 260 Q120 235 230 258 T400 250 V300 H0Z" fill="#14503a"/>
+      <g fill="#0f2a22"><rect x="60" y="150" width="120" height="60" rx="22"/><rect x="70" y="200" width="12" height="40"/><rect x="100" y="200" width="12" height="40"/><rect x="150" y="200" width="12" height="40"/><rect x="170" y="200" width="12" height="40"/><rect x="160" y="125" width="44" height="40" rx="14"/><path d="M200 135 l26 10 -26 10z"/><circle cx="190" cy="138" r="3" fill="#fff"/><path d="M62 160 q-20 -10 -14 -30" stroke="#0f2a22" stroke-width="7" fill="none" stroke-linecap="round"/></g>
+      <g fill="#6b4a2f"><ellipse cx="290" cy="215" rx="34" ry="22"/><rect x="262" y="225" width="7" height="30"/><rect x="312" y="225" width="7" height="30"/><circle cx="330" cy="195" r="13"/><path d="M327 184 l-4 -14 8 8z M338 186 l6 -12 3 12z"/></g>
+      <g><circle cx="115" cy="270" r="0"/></g>
+      <path d="M345 252 l10 -26 10 26z" fill="#fff"/><rect x="351" y="246" width="8" height="6" fill="#c8321f"/>
+    </svg>
+  </div>
+</div>
+
+<section style="padding-top:8px">
+  <h2>How VetLink works</h2>
+  <p class="sub">From first worry to follow-up, in one place.</p>
+  <ol class="steps"><li>Create your animal profile</li><li>Describe your concern</li><li>Get preliminary AI guidance</li><li>Find a nearby professional</li><li>Book a consultation</li><li>Track your animal's health</li></ol>
+</section>
+
+<section id="find">
+  <h2>Find veterinary care near you</h2>
+  <p class="sub">Filter by species and service. Distances are sample data for Kakamega; live results will use your GPS location.</p>
+  <div class="panel">
+    <div class="filters" role="group" aria-label="Species">
+      <button class="chip" aria-pressed="true" data-sp="all">All animals</button>
+      <button class="chip" aria-pressed="false" data-sp="Dogs">Dogs</button>
+      <button class="chip" aria-pressed="false" data-sp="Cats">Cats</button>
+      <button class="chip" aria-pressed="false" data-sp="Cattle">Cattle</button>
+      <button class="chip" aria-pressed="false" data-sp="Goats">Goats</button>
+      <button class="chip" aria-pressed="false" data-sp="Poultry">Poultry</button>
+      <button class="chip" aria-pressed="false" data-sp="Horses">Horses</button>
+      <button class="chip" aria-pressed="false" data-sp="Rabbits">Rabbits</button>
+      <button class="chip" aria-pressed="false" data-sp="Pigs">Pigs</button>
+      <button class="chip" aria-pressed="false" data-sp="Sheep">Sheep</button>
+    </div>
+    <div class="row" style="margin:0 0 16px">
+      <select id="svc" aria-label="Service"><option value="all">Any service</option><option>Home visits</option><option>Farm visits</option><option>Emergency</option><option>Online consult</option><option>Pharmacy</option></select>
+      <select id="rad" aria-label="Radius"><option value="5">Within 5 km</option><option value="20" selected>Within 20 km</option><option value="50">Within 50 km</option></select>
+    </div>
+    <div class="finder"><div id="list"></div><div class="map" id="map" role="img" aria-label="Map of nearby providers"><div class="you" title="You"></div></div></div>
+  </div>
+</section>
+
+<section id="ai">
+  <h2>VetLink AI animal care assistant</h2>
+  <p class="sub">Describe what you see. VetLink AI checks for warning signs and suggests how soon to involve a vet. It never diagnoses.</p>
+  <div class="panel">
+    <div class="chat" id="chat" aria-live="polite">
+      <div class="msg me">My dog has been vomiting several times and is not eating.</div>
+      <div class="msg ai">Vomiting can have many causes. Because repeated vomiting can lead to dehydration, consider contacting a veterinarian, especially if your dog is weak, has blood in the vomit, or cannot keep water down.</div>
+    </div>
+    <div class="row"><textarea id="q" rows="2" placeholder="Try: my goat has stopped eating, or: my cow is bloated and cannot stand"></textarea><button class="btn" id="send">Check</button></div>
+    <p class="disc">This information is educational and does not replace examination or treatment by a qualified veterinarian.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sosband">
+    <div><h2 style="color:#fff">Emergency animal care</h2><p>Bleeding, breathing trouble, poisoning, seizures, bloat or a difficult birth? Don't wait.</p></div>
+    <button class="btn sos open-sos">Get emergency help</button>
+  </div>
+</section>
+
+<section id="learn">
+  <h2>Learn animal care</h2>
+  <p class="sub">Articles marked as reviewed carry the name and credentials of a veterinary professional.</p>
+  <div class="edu">
+    <div><small>Vaccination</small><h3>Core vaccines for Kenyan dogs and cats</h3></div>
+    <div><small>Livestock</small><h3>Spotting early signs of East Coast fever</h3></div>
+    <div><small>Nutrition</small><h3>Feeding dairy cows through the dry season</h3></div>
+    <div><small>First aid</small><h3>What to do before the vet arrives</h3></div>
+    <div><small>Poultry</small><h3>A flock vaccination calendar</h3></div>
+    <div><small>Welfare</small><h3>Shade, water and handling basics</h3></div>
+  </div>
+</section>
+</div>
+
+<footer><div class="wrap">VetLink Africa. Verified status is shown only after professional registration checks. Sample providers on this page are placeholders.</div></footer>
+<button class="btn sos fab open-sos pulse">Emergency</button>
+
+<dialog id="sos" aria-labelledby="st">
+  <div class="dh"><h3 id="st">Emergency animal care</h3></div>
+  <div class="db">
+    <p><b>Call a vet now.</b> Describe the animal, the problem and your location.</p>
+    <ol><li>Keep the animal calm, warm and away from other animals.</li><li>Do not give human medicine or force food or water.</li><li>For bleeding, press firmly with a clean cloth.</li><li>If poisoning is suspected, keep the container or plant to show the vet.</li></ol>
+    <div id="sosList"></div>
+    <div class="row"><button class="btn alt" id="closeSos">Close</button><a class="btn" href="#find" id="goFind">See all vets</a></div>
+  </div>
+</dialog>
+
+<script>
+const VETS=[
+ {n:"Dr. John Doe",r:"Small animal specialist",d:2.4,sp:["Dogs","Cats","Rabbits"],sv:["Home visits","Online consult"],e:false,t:"Available today",x:58,y:40},
+ {n:"Kakamega Animal Hospital",r:"24-hour animal hospital",d:4.1,sp:["Dogs","Cats","Cattle","Horses"],sv:["Emergency"],e:true,t:"Open 24 hours",x:35,y:62},
+ {n:"Dr. Amina Wekesa",r:"Mixed and dairy practice",d:7.8,sp:["Cattle","Goats","Sheep","Pigs"],sv:["Farm visits","Emergency"],e:true,t:"Mobile, on call",x:75,y:68},
+ {n:"Lurambi Vet Pharmacy",r:"Veterinary pharmacy",d:3.2,sp:["Dogs","Cattle","Poultry","Goats"],sv:["Pharmacy"],e:false,t:"Open until 6 pm",x:48,y:28},
+ {n:"Dr. Peter Otieno",r:"Poultry health officer",d:12.5,sp:["Poultry","Rabbits"],sv:["Farm visits","Online consult"],e:false,t:"Available tomorrow",x:20,y:30},
+ {n:"Mumias Livestock Clinic",r:"Livestock clinic",d:18.9,sp:["Cattle","Goats","Sheep","Horses"],sv:["Farm visits","Emergency"],e:true,t:"Open until 8 pm",x:84,y:22}
+];
+const $=s=>document.querySelector(s);
+let sp="all";
+function render(){
+  const sv=$("#svc").value,rad=+$("#rad").value;
+  const res=VETS.filter(v=>(sp==="all"||v.sp.includes(sp))&&(sv==="all"||v.sv.includes(sv))&&v.d<=rad).sort((a,b)=>a.d-b.d);
+  $("#list").innerHTML=res.length?res.map(v=>`<div class="vet"><div class="av">${v.n.replace(/Dr\. /,"").split(" ").map(w=>w[0]).slice(0,2).join("")}</div><div><b>${v.n}</b><small>${v.r}. ${v.t}</small><div>${v.sv.map(s=>`<span class="badge">${s}</span>`).join("")}</div></div><div class="dist">${v.d} km</div></div>`).join(""):"<p>No providers match. Widen the radius or choose another service.</p>";
+  document.querySelectorAll(".pin").forEach(p=>p.remove());
+  res.forEach((v,i)=>{const p=document.createElement("div");p.className="pin";p.style.left=v.x+"%";p.style.top=v.y+"%";if(v.e)p.style.background="var(--red)";p.title=v.n;p.innerHTML="<i>"+(i+1)+"</i>";$("#map").appendChild(p)});
+}
+document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed","false"));c.setAttribute("aria-pressed","true");sp=c.dataset.sp;render()});
+$("#svc").onchange=render;$("#rad").onchange=render;render();
+
+// Triage: keyword rules only, educational output, never a diagnosis
+const RULES=[
+ ["emergency",/(not breathing|can'?t breathe|difficulty breathing|gasping|poison|ate .*(rat|poison|chocolate)|seiz|convuls|unconscious|collaps|heavy bleeding|bleeding (a lot|heavily)|hit by|can'?t urinate|not urinating|bloat|swollen belly|broken (leg|bone)|calving|difficult birth|labou?r.*(hours)|cannot stand|can'?t stand|can'?t walk)/i,"Emergency","This can become life-threatening quickly. Contact a veterinarian or emergency animal hospital now, and keep the animal calm and warm while you travel or wait."],
+ ["urgent",/(vomit.*(several|repeated|blood)|blood|bloody|diarrh|very weak|lethargic|high fever|not drinking|stopped eating|not eating|off feed|limp|eye.*(red|cloudy)|swelling)/i,"Urgent","Contact a veterinarian today. Dehydration and weakness can develop fast, especially in young, old or pregnant animals."],
+ ["vet",/(rash|itch|scratch|lump|wound|cough|sneez|discharge|hair loss|ticks?|fleas?|worms?|limping|skin)/i,"Needs a vet","A veterinarian should examine this. Several conditions look similar, so an exam is the safest way to find the cause."]
+];
+const FOLLOW={goat:"How long has it stopped eating? Is it drinking, standing or lying down? Any diarrhoea, coughing or nasal discharge? Is it pregnant, or was its feed changed recently?",cow:"Is she still producing milk? Is her belly swollen? Is she standing? Any discharge, fever or recent calving?",dog:"How many times has this happened? Can your dog keep water down? Any blood, weakness or access to toxins?"};
+function triage(t){
+  for(const [k,re,l,m] of RULES) if(re.test(t)) return {k,l,m};
+  return {k:"low",l:"Low concern",m:"Monitor closely, keep fresh water available and note any changes. If signs last more than a day or get worse, contact a veterinarian."};
+}
+function ask(){
+  const t=$("#q").value.trim(); if(!t) return;
+  const r=triage(t), key=Object.keys(FOLLOW).find(a=>t.toLowerCase().includes(a));
+  const c=$("#chat"), u=document.createElement("div"); u.className="msg me"; u.textContent=t; c.appendChild(u);
+  const a=document.createElement("div"); a.className="triage t-"+r.k;
+  a.innerHTML=`<strong>Urgency: ${r.l}</strong>${r.m}${key?`<p><b>Questions to answer:</b> ${FOLLOW[key]}</p>`:""}<div class="row">${r.k==="emergency"?'<button class="btn sos open-sos">Emergency help</button>':""}<a class="btn" href="#find">Find a vet near me</a></div>`;
+  c.appendChild(a); $("#q").value=""; bindSos(); if(r.k==="emergency") $("#sos").showModal();
+}
+$("#send").onclick=ask;
+$("#q").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();ask()}});
+
+// Emergency dialog
+function bindSos(){document.querySelectorAll(".open-sos").forEach(b=>b.onclick=()=>{
+  const em=VETS.filter(v=>v.e).sort((a,b)=>a.d-b.d).slice(0,3);
+  $("#sosList").innerHTML=em.map(v=>`<div class="vet"><div><b>${v.n}</b><small>${v.t}</small></div><div class="dist">${v.d} km</div></div>`).join("");
+  $("#sos").showModal()})}
+bindSos();
+$("#closeSos").onclick=()=>$("#sos").close();
+$("#goFind").onclick=()=>$("#sos").close();
+
+// PWA install
+let dp;addEventListener("beforeinstallprompt",e=>{e.preventDefault();dp=e;$("#install").hidden=false});
+$("#install").onclick=async()=>{if(dp){dp.prompt();dp=null;$("#install").hidden=true}};
+</script>
+</body>
+</html>

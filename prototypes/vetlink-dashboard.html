@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Animals — VetLink Africa</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#f6f8f4;--surface:#fff;--ink:#0f2a22;--mute:#52665e;--leaf:#1f6b4f;--leaf2:#d9ece3;--sun:#f2b33d;--red:#c8321f;--redbg:#fde9e5;--line:#d5ded8;--amber:#b86e00;--amberbg:#fff1d6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1713;--surface:#12251e;--ink:#eaf3ee;--mute:#9db3a9;--leaf:#4fbf8f;--leaf2:#17352a;--line:#274035;--redbg:#3a1a15;--amberbg:#3a2a0c;--amber:#f2b33d}}
+:root[data-theme="dark"]{--bg:#0b1713;--surface:#12251e;--ink:#eaf3ee;--mute:#9db3a9;--leaf:#4fbf8f;--leaf2:#17352a;--line:#274035;--redbg:#3a1a15;--amberbg:#3a2a0c;--amber:#f2b33d}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Public Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;line-height:1.15;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 60px}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:10px}
+.logo{font:800 22px "Bricolage Grotesque",sans-serif}.logo span{color:var(--leaf)}
+.btn{border:0;border-radius:10px;padding:10px 16px;font:600 14px "Public Sans",sans-serif;cursor:pointer;background:var(--leaf);color:#fff;text-decoration:none;display:inline-block}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.sos{background:var(--red)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+h1{font-size:clamp(26px,4vw,36px);margin:10px 0 18px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:22px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px}
+.stat b{display:block;font:800 28px "Bricolage Grotesque",sans-serif}
+.stat span{color:var(--mute);font-size:14px}
+.stat.warn{background:var(--amberbg);border-color:var(--amber)}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:20px}
+@media(max-width:820px){.layout{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
+.pets{display:flex;flex-direction:column;gap:8px}
+@media(max-width:820px){.pets{flex-direction:row;overflow-x:auto}}
+.pet{display:flex;gap:10px;align-items:center;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:10px;cursor:pointer;text-align:left;font:inherit;min-width:170px}
+.pet[aria-pressed="true"]{border-color:var(--leaf);background:var(--leaf2)}
+.em{width:40px;height:40px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-size:22px;flex:none}
+.pet small{display:block;color:var(--mute)}
+.head{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.head .em{width:64px;height:64px;font-size:36px;background:var(--leaf2)}
+.pill{display:inline-block;border-radius:999px;padding:3px 10px;font-size:13px;font-weight:600;background:var(--leaf2);color:var(--leaf)}
+.pill.due{background:var(--amberbg);color:var(--amber)}
+.pill.over{background:var(--redbg);color:var(--red)}
+dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 16px;margin:0 0 18px}
+dt{font-size:13px;color:var(--mute)}dd{margin:0;font-weight:600}
+h3{margin:18px 0 8px;font-size:18px}
+.vax{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-top:1px solid var(--line);align-items:center}
+.tl{list-style:none;margin:0;padding:0 0 0 18px;border-left:2px solid var(--leaf2)}
+.tl li{position:relative;padding:0 0 16px 14px}
+.tl li:before{content:"";position:absolute;left:-25px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--leaf);border:2px solid var(--surface)}
+.tl small{color:var(--mute)}
+.tl .by{font-size:12px;color:var(--leaf);font-weight:600}
+form{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+form .full{grid-column:1/-1}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:9px;width:100%}
+.note{font-size:13px;color:var(--mute);margin-top:14px}
+dialog{border:0;border-radius:18px;max-width:420px;width:calc(100% - 32px);background:var(--surface);color:var(--ink);padding:20px}
+dialog::backdrop{background:rgba(5,15,10,.6)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="logo">VetLink<span> Africa</span></div><button class="btn sos" id="sos">Emergency</button></header>
+<h1>Good morning, Wanjiru</h1>
+
+<div class="stats" id="stats"></div>
+
+<div class="layout">
+  <aside class="panel">
+    <h3 style="margin-top:0">My animals</h3>
+    <div class="pets" id="pets"></div>
+    <button class="btn alt" id="addPet" style="margin-top:10px;width:100%">Add an animal</button>
+  </aside>
+  <main class="panel" id="main"></main>
+</div>
+</div>
+
+<dialog id="petDlg"><h3 style="margin-top:0">Add an animal</h3>
+<form id="petForm"><input class="full" name="name" placeholder="Name or tag number" required>
+<select name="species"><option>Dog</option><option>Cat</option><option>Cow</option><option>Goat</option><option>Sheep</option><option>Poultry</option><option>Horse</option><option>Rabbit</option><option>Pig</option></select>
+<input name="breed" placeholder="Breed">
+<input name="dob" type="date" aria-label="Date of birth">
+<input name="weight" placeholder="Weight (kg)">
+<button class="btn full" type="submit">Save animal</button><button class="btn alt full" type="button" id="cancelPet">Cancel</button></form></dialog>
+
+<dialog id="sosDlg"><h3 style="margin-top:0;color:var(--red)">Emergency animal care</h3>
+<p>Call a vet now and describe the animal, the problem and your location. Keep the animal calm and warm. Do not give human medicine.</p>
+<button class="btn" id="closeSos">Close</button></dialog>
+
+<script>
+const EMO={Dog:"🐕",Cat:"🐈",Cow:"🐄",Goat:"🐐",Sheep:"🐑",Poultry:"🐔",Horse:"🐴",Rabbit:"🐇",Pig:"🐖"};
+const today=new Date("2026-10-01");
+const d=s=>new Date(s);
+const days=s=>Math.round((d(s)-today)/864e5);
+const fmt=s=>d(s).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"});
+let animals=[
+ {id:1,name:"Max",species:"Dog",breed:"German Shepherd",sex:"Male",dob:"2023-06-12",weight:"34 kg",colour:"Black and tan",chip:"404 1234 5678",loc:"Kakamega",allergies:"None known",
+  vax:[{n:"Rabies",due:"2026-10-20"},{n:"DHPP",due:"2027-03-02"}],meds:[{n:"Tick and flea treatment",next:"2026-10-08"}],appt:{when:"2026-10-15",vet:"Dr. John Doe",type:"Annual check-up"},
+  tl:[{t:"Follow-up",title:"Post-treatment recheck booked",date:"2026-09-20",by:"Dr. John Doe, verified",note:"Appetite normal. Recheck in 3 weeks."},{t:"Medication",title:"Deworming",date:"2026-08-30",by:"Owner",note:"Tablet given with food."},{t:"Consultation",title:"Vomiting for two days",date:"2026-08-18",by:"Dr. John Doe, verified",note:"Examined and treated. Diet advice given."},{t:"Vaccination",title:"Rabies vaccine",date:"2025-10-20",by:"Dr. John Doe, verified",note:"Card uploaded."},{t:"Registration",title:"Max added to VetLink",date:"2025-07-01",by:"Owner",note:""}]},
+ {id:2,name:"Bella",species:"Cow",breed:"Friesian cross",sex:"Female",dob:"2021-02-03",weight:"480 kg",colour:"Black and white",chip:"Ear tag KK-0231",loc:"Lurambi farm",allergies:"None known",
+  vax:[{n:"Foot and mouth",due:"2026-10-04"},{n:"Lumpy skin disease",due:"2026-12-10"}],meds:[],appt:null,
+  tl:[{t:"Breeding",title:"Artificial insemination",date:"2026-08-12",by:"Dr. Amina Wekesa, verified",note:"Pregnancy check due in 60 days."},{t:"Registration",title:"Bella added to VetLink",date:"2025-03-02",by:"Owner",note:""}]},
+ {id:3,name:"Layers flock A",species:"Poultry",breed:"Kenbro",sex:"Mixed",dob:"2026-03-15",weight:"1.8 kg avg",colour:"Brown",chip:"Flock of 120",loc:"Lurambi farm",allergies:"N/A",
+  vax:[{n:"Newcastle disease booster",due:"2026-09-25"}],meds:[],appt:null,
+  tl:[{t:"Mortality",title:"2 birds lost this week",date:"2026-09-28",by:"Owner",note:"No other signs. Monitoring."}]}
+];
+try{const s=localStorage.getItem("vl-animals");if(s)animals=JSON.parse(s)}catch(e){}
+function save(){try{localStorage.setItem("vl-animals",JSON.stringify(animals))}catch(e){}}
+let cur=animals[0].id;
+const $=s=>document.querySelector(s);
+const status=v=>{const n=days(v.due);return n<0?["over","Overdue by "+(-n)+" days"]:n<=14?["due","Due in "+n+" days"]:["","Due "+fmt(v.due)]};
+
+function stats(){
+  const vx=animals.flatMap(a=>a.vax.map(v=>({...v,a})));
+  const soon=vx.filter(v=>days(v.due)<=14);
+  const appts=animals.filter(a=>a.appt).length;
+  const meds=animals.reduce((n,a)=>n+a.meds.length,0);
+  $("#stats").innerHTML=`<div class="stat"><b>${animals.length}</b><span>Animals</span></div><div class="stat"><b>${appts}</b><span>Upcoming appointments</span></div><div class="stat ${soon.length?"warn":""}"><b>${soon.length}</b><span>Vaccinations due or overdue</span></div><div class="stat"><b>${meds}</b><span>Medication reminders</span></div>`;
+}
+function pets(){
+  $("#pets").innerHTML=animals.map(a=>`<button class="pet" data-id="${a.id}" aria-pressed="${a.id===cur}"><span class="em">${EMO[a.species]||"🐾"}</span><span><b>${a.name}</b><small>${a.species}, ${a.breed||"unknown breed"}</small></span></button>`).join("");
+  document.querySelectorAll(".pet").forEach(b=>b.onclick=()=>{cur=+b.dataset.id;draw()});
+}
+function age(s){const m=Math.max(0,Math.round((today-d(s))/2629800000));return m>=24?Math.floor(m/12)+" years":m+" months"}
+function main(){
+  const a=animals.find(x=>x.id===cur);
+  const worst=a.vax.map(v=>status(v)[0]);
+  const ok=worst.includes("over")?["over","Vaccination overdue"]:worst.includes("due")?["due","Vaccination due soon"]:["","Vaccinations up to date"];
+  $("#main").innerHTML=`
+  <div class="head"><span class="em">${EMO[a.species]||"🐾"}</span><div><h2 style="font-family:'Bricolage Grotesque';font-size:28px;margin:0">${a.name}</h2><span class="pill ${ok[0]}">${ok[1]}</span> ${a.appt?`<span class="pill">Next visit ${fmt(a.appt.when)}</span>`:""}</div></div>
+  <dl><div><dt>Species</dt><dd>${a.species}</dd></div><div><dt>Breed</dt><dd>${a.breed||"—"}</dd></div><div><dt>Age</dt><dd>${age(a.dob)}</dd></div><div><dt>Sex</dt><dd>${a.sex||"—"}</dd></div><div><dt>Weight</dt><dd>${a.weight||"—"}</dd></div><div><dt>Colour</dt><dd>${a.colour||"—"}</dd></div><div><dt>ID or microchip</dt><dd>${a.chip||"—"}</dd></div><div><dt>Location</dt><dd>${a.loc||"—"}</dd></div><div><dt>Allergies</dt><dd>${a.allergies||"—"}</dd></div></dl>
+  ${a.appt?`<h3>Next appointment</h3><p style="margin:0">${a.appt.type} with ${a.appt.vet} on ${fmt(a.appt.when)}</p>`:""}
+  <h3>Vaccinations</h3>${a.vax.length?a.vax.map((v,i)=>{const s=status(v);return `<div class="vax"><span>${v.n}</span><span><span class="pill ${s[0]}">${s[1]}</span> <button class="btn alt" data-done="${i}">Mark done</button></span></div>`}).join(""):"<p>No vaccinations recorded yet. Add one below.</p>"}
+  ${a.meds.length?`<h3>Medication reminders</h3>`+a.meds.map(m=>`<div class="vax"><span>${m.n}</span><span class="pill due">Next ${fmt(m.next)}</span></div>`).join(""):""}
+  <h3>Health timeline</h3>
+  <ul class="tl">${a.tl.map(e=>`<li><b>${e.title}</b> <span class="pill">${e.t}</span><br><small>${fmt(e.date)}</small><br><span class="by">${e.by}</span>${e.note?`<br>${e.note}`:""}</li>`).join("")}</ul>
+  <h3>Add a record</h3>
+  <form id="rec"><select name="t"><option>Vaccination</option><option>Consultation</option><option>Medication</option><option>Lab test</option><option>Surgery</option><option>Breeding</option><option>Feed</option><option>Weight</option><option>Note</option></select><input name="date" type="date" value="2026-10-01" required><input class="full" name="title" placeholder="What happened?" required><textarea class="full" name="note" rows="2" placeholder="Details (optional)"></textarea><button class="btn full" type="submit">Save record</button></form>
+  <p class="note">Records you add are marked as owner entries. Only verified veterinary professionals can add professional records. Document uploads will be added with storage.</p>`;
+  document.querySelectorAll("[data-done]").forEach(b=>b.onclick=()=>{
+    const v=a.vax[+b.dataset.done];
+    a.tl.unshift({t:"Vaccination",title:v.n+" given",date:"2026-10-01",by:"Owner",note:"Next dose date to be confirmed with your vet."});
+    a.vax.splice(+b.dataset.done,1);save();draw()});
+  $("#rec").onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);
+    a.tl.unshift({t:f.get("t"),title:f.get("title"),date:f.get("date"),by:"Owner",note:f.get("note")});
+    a.tl.sort((x,y)=>d(y.date)-d(x.date));save();draw()};
+}
+function draw(){stats();pets();main()}
+$("#addPet").onclick=()=>$("#petDlg").showModal();
+$("#cancelPet").onclick=()=>$("#petDlg").close();
+$("#petForm").onsubmit=e=>{e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
+  const id=Date.now();animals.push({id,name:f.name,species:f.species,breed:f.breed,sex:"",dob:f.dob||"2026-01-01",weight:f.weight?f.weight+" kg":"",colour:"",chip:"",loc:"",allergies:"",vax:[],meds:[],appt:null,tl:[{t:"Registration",title:f.name+" added to VetLink",date:"2026-10-01",by:"Owner",note:""}]});
+  cur=id;save();e.target.reset();$("#petDlg").close();draw()};
+$("#sos").onclick=()=>$("#sosDlg").showModal();
+$("#closeSos").onclick=()=>$("#sosDlg").close();
+draw();
+</script>
+</body>
+</html>
